@@ -1,0 +1,66 @@
+<div id="section-faq">
+  {% if block.type == 'header' %}
+<h3 class="faq-header">{{block.settings.header}}</h3>
+{% else %}
+
+{% for block in section.blocks %}  
+<div class="accordion" id={{id}}>{{block.settings.question}}<span></span></div>
+   <div class="container">
+ <div class="content">
+ <div>{{block.settings.answer}}</div>
+ </div>
+ </div>
+ {% endfor %}
+{% endif %}
+</div>  
+<hr>
+{% schema %}
+{
+ "name": "FAQ",
+ "settings": [
+ ],
+ "blocks": [
+ {
+ "type": "slide",
+ "name": "Question",
+ "settings": [
+ {
+ "type": "header",
+ "content": "Question Item"
+ },
+ {
+ "type": "number",
+ "id": "id",
+ "label": "id — integer"
+ },
+ {
+ "type": "text",
+ "id": "question",
+ "label": "Question — text"
+ },
+ {
+ "type": "html",
+ "id": "answer",
+ "label": "Answer — html"
+ }
+]
+ },
+ {
+ "type": "header",
+ "name": "Header",
+ "settings": [
+ {
+ "type": "header",
+ "content": "Header"
+ },
+ {
+ "type": "text",
+ "id": "header",
+ "label": "Header"
+ }
+]
+ }
+ ]
+}
+{% endschema %}
+
